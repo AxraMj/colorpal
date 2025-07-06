@@ -9,7 +9,8 @@ import { Button } from "@swc-react/button";
 import { Theme } from "@swc-react/theme";
 import React from "react";
 import ColorExtractor from "./ColorExtractor";
-import "../../styles.css";
+import Logo from "./Logo";
+import "./App.css";
 
 const LoadingSpinner = () => (
   <div
@@ -98,24 +99,19 @@ const App = ({ loading, error, addOnUISdk, sandboxProxy }) => {
     }
 
     return (
-      <>
-        <h2 style={{ textAlign: "center", marginBottom: "15px" }}>
-          ColorPal - Color Palette Extractor
-        </h2>
-        <p
-          style={{
-            textAlign: "center",
-            color: "#666",
-            fontSize: "14px",
-            marginBottom: "25px",
-          }}
-        >
-          Upload an image to extract its color palette. Click on any color to
-          apply it to your document, and click the HEX code to copy it to
-          clipboard.
-        </p>
-        <ColorExtractor sandboxProxy={sandboxProxy} />
-      </>
+      <div className="app-container">
+        <header className="app-header">
+          <Logo width={48} height={48} />
+          <p className="app-description">
+            Upload an image to extract its color palette. Click on any color to
+            apply it to your document, or select multiple colors to create
+            gradients.
+          </p>
+        </header>
+        <main>
+          <ColorExtractor sandboxProxy={sandboxProxy} />
+        </main>
+      </div>
     );
   };
 

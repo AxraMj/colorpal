@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import ColorThief from "colorthief";
 import ColorPalette from "./ColorPalette";
+import GradientCreator from "./GradientCreator";
 
 const ColorExtractor = ({ sandboxProxy }) => {
   const [colors, setColors] = useState([]);
+  const [selectedColors, setSelectedColors] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -27,6 +29,7 @@ const ColorExtractor = ({ sandboxProxy }) => {
 
     setLoading(true);
     setError(null);
+    setSelectedColors([]); // Reset selected colors when new image is uploaded
 
     const reader = new FileReader();
     reader.onload = async (e) => {
@@ -65,27 +68,60 @@ const ColorExtractor = ({ sandboxProxy }) => {
     reader.readAsDataURL(file);
   };
 
+  const handleColorSelect = (newSelectedColors) => {
+    setSelectedColors(newSelectedColors);
+  };
+
   return (
     <div className="color-extractor">
       <div className="upload-section">
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImageUpload}
-          style={{
-            marginBottom: "20px",
-          }}
-        />
+        <div className="file-input-wrapper">
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            className="file-input"
+          />
+          <div className="file-input-button">
+            Choose an image to extract colors
+          </div>
+        </div>
       </div>
 
-      {error && <p style={{ color: "red", textAlign: "center" }}>{error}</p>}
+      {error && (
+        <p
+          style={{
+            color: "#f44336",
+            textAlign: "center",
+            margin: "12px 0",
+            fontSize: "14px",
+          }}
+        >
+          {error}
+        </p>
+      )}
 
-      {loading && <p style={{ textAlign: "center" }}>Extracting colors...</p>}
+      {loading && (
+        <p
+          style={{
+            textAlign: "center",
+            margin: "12px 0",
+            fontSize: "14px",
+            color: "#666",
+          }}
+        >
+          Extracting colors...
+        </p>
+      )}
 
       {colors.length > 0 && !error && (
         <div className="results-section">
-          <h3>Extracted Colors</h3>
-          <ColorPalette colors={colors} sandboxProxy={sandboxProxy} />
+          <ColorPalette
+            colors={colors}
+            sandboxProxy={sandboxProxy}
+            onColorSelect={handleColorSelect}
+          />
+          <GradientCreator selectedColors={selectedColors} />
         </div>
       )}
     </div>
