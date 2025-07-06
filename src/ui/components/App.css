@@ -1,0 +1,53 @@
+.container {
+  margin: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.color-extractor {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.upload-section {
+  margin: 20px 0;
+}
+
+.color-palette {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.color-swatch {
+  transition: transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.color-swatch:hover {
+  transform: scale(1.1);
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 2px dashed #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="file"]:hover {
+  border-color: #999;
+}

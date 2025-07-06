@@ -1,0 +1,99 @@
+.color-extractor {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.upload-section {
+  margin: 20px 0;
+}
+
+.color-palette {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.color-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.color-swatch {
+  transition: transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.color-swatch:hover {
+  transform: scale(1.1);
+}
+
+.hex-code {
+  font-family: monospace;
+  position: relative;
+}
+
+.hex-code:hover {
+  background-color: #f0f0f0 !important;
+}
+
+.copied-text {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 2px dashed #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="file"]:hover {
+  border-color: #999;
+}
+
+/* Add loading spinner animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Add some basic responsive styles */
+@media (max-width: 480px) {
+  .color-palette {
+    gap: 10px;
+  }
+  
+  .color-swatch {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .hex-code {
+    font-size: 12px;
+  }
+} 
