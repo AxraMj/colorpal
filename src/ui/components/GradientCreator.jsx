@@ -152,13 +152,14 @@ const GradientCreator = ({ selectedColors }) => {
       <div
         className="gradient-preview"
         style={{
-          height: "120px",
-          borderRadius: "6px",
-          marginBottom: "12px",
+          height: "200px",
+          borderRadius: "8px",
+          marginBottom: "16px",
           background: gradientCSS,
           position: "relative",
           overflow: "hidden",
           border: "1px solid rgba(0,0,0,0.1)",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
         }}
       >
         <div
