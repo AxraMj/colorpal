@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const ColorPalette = ({ colors, sandboxProxy, onColorSelect }) => {
@@ -10,6 +10,12 @@ const ColorPalette = ({ colors, sandboxProxy, onColorSelect }) => {
     success: true,
     message: "",
   });
+
+  // Reset selected colors when colors prop changes (new image loaded)
+  useEffect(() => {
+    setSelectedColors([]);
+    onColorSelect([]);
+  }, [colors]);
 
   const showStatus = (success, message, duration = 2000) => {
     setApplyStatus({ show: true, success, message });
